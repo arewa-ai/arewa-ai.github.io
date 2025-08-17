@@ -39,13 +39,13 @@ p {
 
 /* --- Links --- */
 a {
-    color: #4CAF50; /* A distinct green for links, similar to the image */
+    color: #e3e7e3; /* A distinct green for links, similar to the image */
     text-decoration: none; /* No underline */
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #66BB6A; /* A slightly lighter green on hover */
+    color: #d5dbe0; /* A slightly lighter green on hover */
 }
 
 /* --- Specific Text Formatting from the example --- */
