@@ -1,0 +1,69 @@
+/*
+    CSS for a minimalist, dark-mode static site
+    based on the ssi.inc example provided.
+*/
+
+/* --- Global Styles --- */
+body {
+    background-color: #121212; /* A dark, off-black background */
+    color: #e0e0e0; /* A light gray for the main text */
+    font-family: 'Courier New', Courier, monospace; /* Use a monospaced font for a terminal-like feel */
+    font-size: 16px;
+    line-height: 1.6; /* Good line height for readability */
+    margin: 0;
+    padding: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Container for the content --- */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px; /* Add some padding around the content */
+}
+
+/* --- Headings --- */
+h1 {
+    font-size: 2em;
+    font-weight: normal; /* Keep headings simple, not bold */
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* --- Paragraphs and Spacing --- */
+p {
+    margin-top: 0;
+    margin-bottom: 20px; /* Consistent spacing between paragraphs */
+}
+
+/* --- Links --- */
+a {
+    color: #4CAF50; /* A distinct green for links, similar to the image */
+    text-decoration: none; /* No underline */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #66BB6A; /* A slightly lighter green on hover */
+}
+
+/* --- Specific Text Formatting from the example --- */
+/* The "Superintelligence is within reach." line */
+.slogan {
+    font-style: italic;
+    color: #aaa; /* A slightly darker gray for secondary text */
+}
+
+/* The "It's called Safe Superintelligence Inc." line */
+.company-name {
+    font-weight: bold;
+    margin-top: 40px; /* Add extra space above this section */
+}
+
+/* --- Media Queries for small screens --- */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+}
