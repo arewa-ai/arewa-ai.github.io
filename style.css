@@ -39,7 +39,7 @@ p {
 
 /* --- Links --- */
 a {
-    color: #e3e7e3; /* A distinct green for links, similar to the image */
+    color: #277794; /* A distinct green for links, similar to the image */
     text-decoration: none; /* No underline */
     transition: color 0.3s ease;
 }
