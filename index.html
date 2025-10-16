@@ -1,37 +1,214 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arewa.ai</title>
+    <title>Arewa AI - LLMs como Servicio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="container">
+            <img src="assets/arewa/logo.png" alt="Arewa AI" class="logo">
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#beneficios">Beneficios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <div class="container">
-        <h1>arewa.ai</h1>
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Inferencia segura <br> sin límites para LATAM</h2>
+            <p>La alternativa <b>soberana</b> a OpenAI. <br> Accede a LLMs de código abierto de forma fácil y segura.</p>
+            <!-- Code Examples -->
+            <div class="code-examples">
+                <div class="code-tabs">
+                    <button class="tab-button active" onclick="showCode('curl')">cURL</button>
+                    <button class="tab-button" onclick="showCode('python')">Python</button>
+                </div>
+                <div class="code-content">
+                    <div id="curl-code" class="code-block language-bash active">
+                        <pre><code>$ curl https://api.arewa.ai/inference/v1/chat/completions \
+  -H "Authorization: Bearer $AREWA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+      "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+      "messages": [
+          {
+              "role": "user",
+              "content": "What is the secret of life?"
+          }
+      ]
+  }'</code></pre>
+                    </div>
+                    <div id="python-code" class="code-block language-python">
+                        <pre><code>import os
+from openai import OpenAI
 
-        <p>La inteligencia artificial ha llegado a un punto de inflexión. No es solo una tecnología, es la democratización de la inteligencia y el progreso.</p>
+client = OpenAI(
+    base_url="https://api.arewa.ai/inference/v1",
+    api_key=os.environ.get("AREWA_API_KEY")
+)
 
-        <p>Proveer y facilitar la integración de esta tecnología en América Latina es el desafío que hemos aceptado, y que consideramos de suma importancia para nuestras sociedades.</p>
+completion = client.chat.completions.create(
+    model="Qwen/Qwen3-Next-80B-A3B-Instruct",
+    messages=[
+        {
+            "role": "user",
+            "content": "What is the secret of life?"
+        }
+    ]
+)
 
-        <p><b>arewa.ai</b> es nuestra respuesta a tal desafío. Somos la primera plataforma en la región dedicada a ofrecer LLMs de código abierto con una API de producción, práctica, segura y personalizable.</p>
+print(completion.choices[0].message.content)</code></pre>
+                    </div>
+                </div>
+            </div>
 
-        <p>Nuestra misión es empoderar a los desarrolladores y empresas de América Latina, dándoles el control total sobre su tecnología y sus datos.</p>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h3>1. Regístrate</h3>
+                    <p>Crea una cuenta y genera tu clave API para empezar.</p>
+                </div>
+                <div class="benefit-item">
+                    <h3>2. Haz el cambio</h3>
+                    <p>Cambia tu proveedor de LLMs a Arewa AI.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <p>Nuestro modelo es simple: acceso a los mejores LLMs de código abierto, con la latencia más baja y la máxima seguridad. No hay compromisos. Nuestro enfoque es un reto de ingeniería pura, centrado en optimizar el rendimiento y la privacidad.</p>
+    <section id="servicios" class="section">
+        <div class="container">
+            <h2>Servicios</h2>
+            <p><b>Arewa AI</b> es la primera plataforma en la región dedicada a ofrecer LLMs de código abierto con una API de producción, práctica, segura y personalizable.</p>
+            <div class="services-grid">
+                <div class="service-item">
+                    <h3>API de Producción</h3>
+                    <p>Acceso a los mejores LLMs de código abierto con latencia mínima y máxima seguridad.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Personalización</h3>
+                    <p>Adapta los modelos a tus necesidades específicas con opciones de fine-tuning.</p>
+                </div>
+                <div class="service-item">
+                    <h3>Escalabilidad</h3>
+                    <p>Infraestructura optimizada para manejar cargas de trabajo de cualquier tamaño.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <p>Esto nos permite escalar con propósito.</p>
+    <section id="beneficios" class="section">
+        <div class="container">
+            <h2>Beneficios</h2>
+            <p>Nuestra misión es empoderar a los desarrolladores y empresas de América Latina, dándoles el control total sobre su tecnología y sus datos.</p>
 
-        <p>Estamos libres de presiones comerciales a corto plazo y de la necesidad de justificar cada ciclo de producto. Nos dedicamos a una sola cosa: ser el socio tecnológico de confianza para la próxima generación de IA en América Latina.</p>
+            <!-- Comparison Section -->
+            <div class="comparison-section">
+                <h3>Comparación con Otras Soluciones</h3>
+                <div class="comparison-table">
+                    <div class="comparison-row header">
+                        <div class="comparison-cell">Característica</div>
+                        <div class="comparison-cell">OpenAI</div>
+                        <div class="comparison-cell">Anthropic</div>
+                        <div class="comparison-cell">Arewa AI</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Modelos Código Abierto</div>
+                        <div class="comparison-cell">⚠️ Algunos</div>
+                        <div class="comparison-cell">❌ No</div>
+                        <div class="comparison-cell">✅ Sí</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Control de Datos</div>
+                        <div class="comparison-cell">⚠️ Condicionado</div>
+                        <div class="comparison-cell">⚠️ Condicionado</div>
+                        <div class="comparison-cell">✅ Total</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Latencia</div>
+                        <div class="comparison-cell">⚠️ Media</div>
+                        <div class="comparison-cell">❌ Alta</div>
+                        <div class="comparison-cell">✅ Baja</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Personalización</div>
+                        <div class="comparison-cell">⚠️ Básica</div>
+                        <div class="comparison-cell">❌ Limitada</div>
+                        <div class="comparison-cell">✅ Avanzada</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Enfoque Regional</div>
+                        <div class="comparison-cell">⚠️ Global</div>
+                        <div class="comparison-cell">⚠️ Global</div>
+                        <div class="comparison-cell">✅ América Latina</div>
+                    </div>
+                </div>
+            </div>
 
-        <p>Comenzamos en México, un punto estratégico para el talento y la innovación en la región. Desde aquí, nos expandiremos para llevar nuestra tecnología a todos los países que la necesiten.</p>
+        </div>
+    </section>
 
-        <p>El futuro de la IA en América Latina se está construyendo ahora. Sé parte de él.</p>
-        
-        <p><a href="#">hola@arewa.ai</a></p>
-            
-    </div>
+    <section id="nosotros" class="section">
+        <div class="container">
+            <h2>Nosotros</h2>
+            <p>Arewa AI es una plataforma mexicana que ofrece LLMs open‑source como servicio (LLMs-as-a-service).
+                Nos enfocamos en el mercado hispano de LATAM, con APIs fáciles de integrar.</p>
+            <p>Fruto de la frustración por depender de plataformas extranjeras. Sin tener control sobre cómo usaban nuestros datos y los de nuestros clientes.<br></p>
+            <p>Nuestra misión es simple: <b>democratizar el acceso a la IA generativa para los desarrolladores de habla hispana.</b>
+                Queremos darte las herramientas más potentes del mundo, con la experiencia y el soporte de alguien que sí te entiende.</p>
+            <p>Estamos construyendo la infraestructura de IA que Latam se merece.</p>
+        </div>
+    </section>
 
+    <section id="contacto" class="section">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p>
+                El futuro de la IA en América Latina se está construyendo ahora. Sé parte de él.<br>
+                Contáctanos para acceder a la plataforma.
+            </p>
+            <p><a href="mailto:hola@arewa.ai">hola@arewa.ai</a></p>
+            <form class="contact-form">
+                <input type="text" placeholder="Nombre" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>
+                &copy; 2025 Arewa AI. Todos los derechos reservados.
+                <br>
+                Hecho con ❤️ en México.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        function showCode(language) {
+            // Hide all code blocks
+            const codeBlocks = document.querySelectorAll('.code-block');
+            codeBlocks.forEach(block => block.classList.remove('active'));
+
+            // Remove active class from all tab buttons
+            const tabButtons = document.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            // Show selected code block
+            document.getElementById(language + '-code').classList.add('active');
+
+            // Add active class to clicked button
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>
