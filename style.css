@@ -3,19 +3,14 @@
     Dark theme with purple/blue titles and white text
 */
 
-/* This resets how width/height is calculated */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
 /* --- Global Styles --- */
 body {
-    background-color: #0e1117; /* Main background color */
-    color: #e6edf3; /* Text color */
-    font-family: 'Source Code Pro', 'Courier New', monospace; /* Source Code font */
+    background-color: #0e1117; 
+    color: #e6edf3; 
+    font-family: 'Source Code Pro', 'Courier New', monospace; 
     font-size: 16px;
     line-height: 1.6;
-    margin: 0;
+    margin: 0; /* <-- KEEP this one */
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -48,6 +43,8 @@ body {
 }
 
 .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
     display: flex;
     list-style: none;
     margin: 0;
@@ -75,7 +72,7 @@ body {
 
 /* --- Sections --- */
 .hero {
-    padding: 120px 0 80px;
+    padding: 100px 0 60px;
     text-align: center;
     background: linear-gradient(135deg, #0e1117 0%, #262730 100%);
 }
@@ -363,7 +360,7 @@ a:hover {
     }
 
     .hero {
-        padding: 100px 0 60px;
+        padding: 140px 0 60px;
     }
 
     .section {
