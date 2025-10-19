@@ -3,6 +3,11 @@
     Dark theme with purple/blue titles and white text
 */
 
+/* This resets how width/height is calculated */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* --- Global Styles --- */
 body {
     background-color: #0e1117; /* Main background color */
