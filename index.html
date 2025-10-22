@@ -11,6 +11,11 @@
     <nav class="navbar">
         <div class="container">
             <img src="assets/arewa/logo.png" alt="Arewa AI" class="logo">
+            <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#servicios">Servicios</a></li>
@@ -208,5 +213,26 @@ print(completion.choices[0].message.content)</code></pre>
             event.target.classList.add('active');
         }
     </script>
+    <script>
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinksAnchors = navLinks.querySelectorAll('a');
+
+    hamburger.addEventListener('click', () => {
+        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+        hamburger.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+    });
+
+    // Close menu when a link is clicked (for single-page apps)
+    navLinksAnchors.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                hamburger.setAttribute('aria-expanded', 'false');
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+</script>
 </body>
 </html>

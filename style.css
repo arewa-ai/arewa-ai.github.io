@@ -63,6 +63,46 @@ body {
     color: #5C3E94; /* Primary color on hover */
 }
 
+/* --- Hamburger Menu --- */
+.hamburger {
+    display: none; /* Hidden by default on desktop */
+    padding: 15px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    z-index: 1001; /* Above navbar content */
+}
+
+.hamburger-box {
+    width: 30px;
+    height: 24px;
+    display: inline-block;
+    position: relative;
+}
+
+.hamburger-inner {
+    display: block;
+    top: 50%;
+    margin-top: -2px;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+    width: 30px;
+    height: 3px;
+    background-color: #e6edf3;
+    border-radius: 4px;
+    position: absolute;
+    transition: transform 0.25s ease-in-out;
+}
+
+.hamburger-inner::before,
+.hamburger-inner::after {
+    content: '';
+    display: block;
+}
+
 /* --- Container --- */
 .container {
     max-width: 1200px;
@@ -72,7 +112,7 @@ body {
 
 /* --- Sections --- */
 .hero {
-    padding: 100px 0 60px;
+    padding: 70px 0 60px;
     text-align: center;
     background: linear-gradient(135deg, #0e1117 0%, #262730 100%);
 }
@@ -350,17 +390,53 @@ a:hover {
 
 /* --- Media Queries --- */
 @media (max-width: 768px) {
+    .hamburger {
+        display: inline-block; /* Show hamburger on mobile */
+    }
+
+    /* Transition for when menu is open */
+    .hamburger[aria-expanded="true"] .hamburger-inner {
+        transform: rotate(45deg);
+    }
+    .hamburger[aria-expanded="true"] .hamburger-inner::before {
+        transform: rotate(-90deg) translate(-10px, 0px);
+        opacity: 0;
+    }
+    .hamburger[aria-expanded="true"] .hamburger-inner::after {
+        transform: rotate(-90deg) translate(10px, 0px);
+    }
+
+    .hamburger-inner::before { top: -10px; }
+    .hamburger-inner::after { bottom: -10px; }
+
     .navbar .container {
-        flex-direction: column;
-        gap: 1rem;
+        flex-direction: row;
     }
 
     .nav-links {
-        gap: 1rem;
+        /* Hide menu off-screen */
+        position: fixed;
+        top: 0;
+        left: -100%; 
+        width: 60%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: #262730;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 6rem 2rem 2rem;
+        gap: 1.5rem;
+        transition: left 0.3s ease-in-out;
     }
 
     .hero {
-        padding: 140px 0 60px;
+        padding: 90px 0 60px; /* Reduced top padding for mobile view */
+    }
+
+    .nav-links.active {
+        left: 0;
+        box-shadow: 5px 0px 15px rgba(0,0,0,0.2);
     }
 
     .section {
