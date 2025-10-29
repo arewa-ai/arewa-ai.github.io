@@ -6,6 +6,7 @@
     <title>Arewa AI - LLMs como Servicio</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/arewa/icon.png" type="image/png">
+    <link rel="stylesheet" href="assets/libs/atom-one-dark.min.css">
 </head>
 <body>
     <nav class="navbar">
@@ -39,7 +40,7 @@
                 </div>
                 <div class="code-content">
                     <div id="curl-code" class="code-block language-bash active">
-                        <pre><code>$ curl https://api.arewa.ai/inference/v1/chat/completions \
+                        <pre><code class="language-bash">$ curl https://api.arewa.ai/inference/v1/chat/completions \
   -H "Authorization: Bearer $AREWA_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -53,7 +54,7 @@
   }'</code></pre>
                     </div>
                     <div id="python-code" class="code-block language-python">
-                        <pre><code>import os
+                        <pre><code class="language-python">import os
 from openai import OpenAI
 
 client = OpenAI(
@@ -92,8 +93,7 @@ print(completion.choices[0].message.content)</code></pre>
     <section id="servicios" class="section">
         <div class="container">
             <h2>Servicios</h2>
-            <p><b>Arewa AI</b> es la primera plataforma en la región dedicada a ofrecer LLMs de código abierto con una API<br>
-                <b>Productiva, Segura y Escalable.</b>
+            <p><b>Arewa AI</b> es la primera plataforma en la región dedicada a ofrecer LLMs de código abierto con una API <b>productiva, segura y escalable.</b>
             </p>
             <div class="services-grid">
                 <div class="service-item">
@@ -127,29 +127,33 @@ print(completion.choices[0].message.content)</code></pre>
                         <div class="comparison-cell">Anthropic</div>
                         <div class="comparison-cell">Arewa AI</div>
                     </div>
+
                     <div class="comparison-row">
-                        <div class="comparison-cell">Modelos de Código Abierto</div>
-                        <div class="comparison-cell">⚠️ Algunos</div>
-                        <div class="comparison-cell">❌ No</div>
-                        <div class="comparison-cell">✅ Sí</div>
+                        <div class="comparison-cell feature">Modelos de Código Abierto</div>
+                        <div class="comparison-cell" data-label="OpenAI">⚠️ Algunos</div>
+                        <div class="comparison-cell" data-label="Anthropic">❌ No</div>
+                        <div class="comparison-cell" data-label="Arewa AI">✅ Sí</div>
                     </div>
+
                     <div class="comparison-row">
-                        <div class="comparison-cell">Control de Datos</div>
-                        <div class="comparison-cell">⚠️ Condicionado</div>
-                        <div class="comparison-cell">⚠️ Condicionado</div>
-                        <div class="comparison-cell">✅ Total</div>
+                        <div class="comparison-cell feature">Control de Datos</div>
+                        <div class="comparison-cell" data-label="OpenAI">⚠️ Condicionado</div>
+                        <div class="comparison-cell" data-label="Anthropic">⚠️ Condicionado</div>
+                        <div class="comparison-cell" data-label="Arewa AI">✅ Total</div>
                     </div>
+
                     <div class="comparison-row">
-                        <div class="comparison-cell">Latencia</div>
-                        <div class="comparison-cell">⚠️ Media</div>
-                        <div class="comparison-cell">❌ Alta</div>
-                        <div class="comparison-cell">✅ Baja</div>
+                        <div class="comparison-cell feature">Latencia</div>
+                        <div class="comparison-cell" data-label="OpenAI">⚠️ Media</div>
+                        <div class="comparison-cell" data-label="Anthropic">❌ Alta</div>
+                        <div class="comparison-cell" data-label="Arewa AI">✅ Baja</div>
                     </div>
+
                     <div class="comparison-row">
-                        <div class="comparison-cell">Enfoque Regional</div>
-                        <div class="comparison-cell">⚠️ Global</div>
-                        <div class="comparison-cell">⚠️ Global</div>
-                        <div class="comparison-cell">✅ América Latina</div>
+                        <div class="comparison-cell feature">Enfoque Regional</div>
+                        <div class="comparison-cell" data-label="OpenAI">⚠️ Global</div>
+                        <div class="comparison-cell" data-label="Anthropic">⚠️ Global</div>
+                        <div class="comparison-cell" data-label="Arewa AI">✅ América Latina</div>
                     </div>
                 </div>
             </div>
@@ -173,8 +177,7 @@ print(completion.choices[0].message.content)</code></pre>
         <div class="container">
             <h2>Contacto</h2>
             <p>
-                El futuro de la IA en América Latina se está construyendo ahora. Sé parte de él.<br>
-                Contáctanos para acceder a la plataforma.
+                El futuro de la IA en América Latina se está construyendo ahora. Sé parte de él. Contáctanos para acceder a la plataforma.
             </p>
             <p><a href="mailto:hola@arewa.ai">hola@arewa.ai</a></p>
             <form class="contact-form">
@@ -195,6 +198,9 @@ print(completion.choices[0].message.content)</code></pre>
             </p>
         </div>
     </footer>
+
+    <script src="assets/libs/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 
     <script>
         function showCode(language) {

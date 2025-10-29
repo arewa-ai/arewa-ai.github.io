@@ -146,6 +146,7 @@ h2 {
 h3 {
     font-size: 1.25rem;
     color: #5C3E94; /* Primary color for subheadings */
+    text-align: center;
 }
 
 /* --- Paragraphs --- */
@@ -156,7 +157,7 @@ p {
 
 /* --- Links --- */
 a {
-    color: #5C3E94; /* Primary color for links */
+    color: #b145c4; /* Primary color for links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
@@ -469,47 +470,68 @@ a:hover {
         font-size: 0.75rem;
     }
 
+    /* --- Responsive Comparison Table Cards --- */
     .comparison-table {
-        grid-template-columns: 1fr;
+        display: block; /* Override desktop's grid */
         max-width: 100%;
+        border: none;
+        background: none;
+        gap: 0;
     }
 
+    /* 1. Hide the desktop header row */
     .comparison-row.header {
-        display: none; /* Hide header on mobile */
+        display: none;
     }
 
+    /* 2. Each row becomes a separate "card" */
+    .comparison-row {
+        display: block; /* CRITICAL: Overrides 'display: contents' */
+        border: 1px solid #5C3E94;
+        border-radius: 12px;
+        margin-bottom: 20px; /* Space between cards */
+        overflow: hidden; /* For card border-radius */
+        background: #262730; /* Your bg color */
+    }
+
+    /* 3. Style the feature cell as the card header */
+    .comparison-cell.feature {
+        display: block;
+        background-color: #5C3E94; /* Your accent color */
+        color: #e6edf3;
+        font-weight: bold;
+        font-size: 1.1em;
+        text-align: center; /* Center the card header */
+        padding: 1rem;
+        border: none; /* Remove desktop border */
+    }
+
+    /* 4. Style the data cells */
     .comparison-cell {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid #333;
+        padding: 1rem;
+        border: none; /* Remove desktop border */
+        border-bottom: 1px solid #444; /* Separator line inside card */
+        text-align: right;
+    }
+    
+    .comparison-row .comparison-cell:last-child {
+        border-bottom: none; /* No line after the last item in a card */
     }
 
-    .comparison-cell:first-child {
-        font-weight: 700;
-        color: #5C3E94;
-    }
-
-    .comparison-cell:not(:first-child)::before {
+    /* 5. The magic: Use the HTML data-label */
+    .comparison-cell::before {
         content: attr(data-label);
         font-weight: 600;
-        color: #5C3E94;
-        margin-right: 1rem;
+        text-align: left;
+        padding-right: 15px;
+        color: #e6edf3; /* Your text color */
     }
 
-    .comparison-row:nth-child(2) .comparison-cell:nth-child(2)::before { content: "Open AI:"; }
-    .comparison-row:nth-child(2) .comparison-cell:nth-child(3)::before { content: "Anthropic:"; }
-    .comparison-row:nth-child(2) .comparison-cell:nth-child(4)::before { content: "Arewa AI:"; }
-    .comparison-row:nth-child(3) .comparison-cell:nth-child(2)::before { content: "Open AI:"; }
-    .comparison-row:nth-child(3) .comparison-cell:nth-child(3)::before { content: "Anthropic:"; }
-    .comparison-row:nth-child(3) .comparison-cell:nth-child(4)::before { content: "Arewa AI:"; }
-    .comparison-row:nth-child(4) .comparison-cell:nth-child(2)::before { content: "Open AI:"; }
-    .comparison-row:nth-child(4) .comparison-cell:nth-child(3)::before { content: "Anthropic:"; }
-    .comparison-row:nth-child(4) .comparison-cell:nth-child(4)::before { content: "Arewa AI:"; }
-    .comparison-row:nth-child(5) .comparison-cell:nth-child(2)::before { content: "Open AI:"; }
-    .comparison-row:nth-child(5) .comparison-cell:nth-child(3)::before { content: "Anthropic:"; }
-    .comparison-row:nth-child(5) .comparison-cell:nth-child(4)::before { content: "Arewa AI:"; }
-    .comparison-row:nth-child(6) .comparison-cell:nth-child(2)::before { content: "Open AI:"; }
-    .comparison-row:nth-child(6) .comparison-cell:nth-child(3)::before { content: "Anthropic:"; }
-    .comparison-row:nth-child(6) .comparison-cell:nth-child(4)::before { content: "Arewa AI:"; }
+    /* The feature cell doesn't need a label */
+    .comparison-cell.feature::before {
+        content: none;
+    }
 }
