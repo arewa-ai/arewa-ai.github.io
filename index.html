@@ -22,8 +22,8 @@
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#beneficios">Beneficios</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="dashboard.html">Mi Cuenta</a></li>
+                <li><a href="#early-access">Solicita acceso</a></li>
+                <li><a href="dashboard.html">Consola</a></li>
             </ul>
         </div>
     </nav>
@@ -117,47 +117,132 @@ print(completion.choices[0].message.content)</code></pre>
             <h2>Beneficios</h2>
             <p>Nuestra misión es empoderar a los desarrolladores y empresas de América Latina, dándoles el control total sobre su tecnología y sus datos.</p>
 
-            <!-- Comparison Section -->
             <div class="comparison-section">
                 <h3>Comparación con Otras Soluciones</h3>
                 <div class="comparison-table">
-                    <div class="comparison-row header">
-                        <div class="comparison-cell">Características</div>
-                        <div class="comparison-cell">OpenAI</div>
-                        <div class="comparison-cell">Anthropic</div>
-                        <div class="comparison-cell">Arewa AI</div>
-                    </div>
+                <div class="comparison-row header">
+                    <div class="comparison-cell">Características</div>
+                    <div class="comparison-cell">OpenAI</div>
+                    <div class="comparison-cell">Anthropic</div>
+                    <div class="comparison-cell">Arewa AI</div>
+                </div>
 
                     <div class="comparison-row">
                         <div class="comparison-cell feature">Modelos de Código Abierto</div>
-                        <div class="comparison-cell" data-label="OpenAI">⚠️ Algunos</div>
-                        <div class="comparison-cell" data-label="Anthropic">❌ No</div>
-                        <div class="comparison-cell" data-label="Arewa AI">✅ Sí</div>
+                        <div class="comparison-cell" data-label="OpenAI">
+                            <span class="icon-wrapper">
+                                <!-- Icono SVG de Advertencia -->
+                                <svg class="icon icon-warn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                                Algunos
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Anthropic">
+                            <span class="icon-wrapper">
+                                <!-- Icono SVG de 'X' (No) -->
+                                <svg class="icon icon-no" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                No
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Arewa AI">
+                            <span class="icon-wrapper">
+                                <!-- Icono SVG de Check (Sí) -->
+                                <svg class="icon icon-yes" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Sí
+                            </span>
+                        </div>
                     </div>
 
                     <div class="comparison-row">
                         <div class="comparison-cell feature">Control de Datos</div>
-                        <div class="comparison-cell" data-label="OpenAI">⚠️ Condicionado</div>
-                        <div class="comparison-cell" data-label="Anthropic">⚠️ Condicionado</div>
-                        <div class="comparison-cell" data-label="Arewa AI">✅ Total</div>
+                        <div class="comparison-cell" data-label="OpenAI">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-warn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                                Condicionado
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Anthropic">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-warn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                                Condicionado
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Arewa AI">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-yes" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Total
+                            </span>
+                        </div>
                     </div>
 
                     <div class="comparison-row">
                         <div class="comparison-cell feature">Latencia</div>
-                        <div class="comparison-cell" data-label="OpenAI">⚠️ Media</div>
-                        <div class="comparison-cell" data-label="Anthropic">❌ Alta</div>
-                        <div class="comparison-cell" data-label="Arewa AI">✅ Baja</div>
+                        <div class="comparison-cell" data-label="OpenAI">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-warn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                                Media
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Anthropic">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-no" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Alta
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Arewa AI">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-yes" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Baja
+                            </span>
+                        </div>
                     </div>
 
                     <div class="comparison-row">
                         <div class="comparison-cell feature">Enfoque Regional</div>
-                        <div class="comparison-cell" data-label="OpenAI">⚠️ Global</div>
-                        <div class="comparison-cell" data-label="Anthropic">⚠️ Global</div>
-                        <div class="comparison-cell" data-label="Arewa AI">✅ América Latina</div>
+                        <div class="comparison-cell" data-label="OpenAI">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-warn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                                Global
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Anthropic">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-warn" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
+                                </svg>
+                                Global
+                            </span>
+                        </div>
+                        <div class="comparison-cell" data-label="Arewa AI">
+                            <span class="icon-wrapper">
+                                <svg class="icon icon-yes" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                América Latina
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -173,19 +258,19 @@ print(completion.choices[0].message.content)</code></pre>
         </div>
     </section>
 
-    <section id="contacto" class="section">
+    <section id="early-access" class="section">
         <div class="container">
-            <h2>Contacto</h2>
+            <h2>Accede a la plataforma</h2>
             <p>
                 El futuro de la IA en América Latina se está construyendo ahora. Sé parte de él. Contáctanos para acceder a la plataforma.
             </p>
-            <p><a href="mailto:hola@arewa.ai">hola@arewa.ai</a></p>
-            <form class="contact-form">
+            <p style="text-align: center;"><a href="mailto:hola@arewa.ai">hola@arewa.ai</a></p>
+            <!-- <form class="contact-form">
                 <input type="text" placeholder="Nombre" required>
                 <input type="email" placeholder="Email" required>
                 <textarea placeholder="Mensaje" required></textarea>
                 <button type="submit">Enviar</button>
-            </form>
+            </form> -->
         </div>
     </section>
 

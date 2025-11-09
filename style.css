@@ -234,18 +234,48 @@ a:hover {
     background: #5C3E94;
     color: #e6edf3;
     font-weight: 700;
+    /* Centra el texto solo en las celdas de la cabecera */
+    text-align: center;
 }
 
 .comparison-cell {
     background: #262730;
     padding: 1rem;
-    text-align: center;
+    /* Alinea el contenido a la izquierda por defecto para las celdas de datos */
+    text-align: left;
     border: 1px solid #5C3E94;
+    /* Asegura que el icono y el texto estén alineados verticalmente */
+    vertical-align: middle;
 }
 
 .comparison-cell:first-child {
     text-align: left;
     font-weight: 600;
+}
+
+/* --- Icon Styles (for comparison table) --- */       
+.icon-wrapper {
+    /* Esto reemplaza a "flex items-center" de Tailwind */
+    display: flex;
+    align-items: center;
+    /* Alinea el icono y el texto a la izquierda (flex-start) en lugar de centrarlos */
+    justify-content: flex-start;
+}
+
+.icon {
+    width: 1.25rem; /* 20px */
+    height: 1.25rem; /* 20px */
+    margin-right: 0.5rem; /* 8px */
+    flex-shrink: 0; /* Evita que el icono se encoja */
+}
+.icon-yes {
+    color: #10B981; /* Verde brillante */
+}
+.icon-no {
+    color: #EF4444; /* Rojo brillante */
+}
+.icon-warn {
+    color: #F59E0B; /* Ámbar brillante */
 }
 
 /* --- Benefits List --- */
