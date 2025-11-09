@@ -5,9 +5,9 @@
 
 /* --- Global Styles --- */
 body {
-    background-color: #0e1117; 
-    color: #e6edf3; 
-    font-family: 'Source Code Pro', 'Courier New', monospace; 
+    background-color: #0e1117;  
+    color: #e6edf3;  
+    font-family: 'Source Code Pro', 'Courier New', monospace;  
     font-size: 16px;
     line-height: 1.6;
     margin: 0; /* <-- KEEP this one */
@@ -107,7 +107,8 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding-left: 20px; 
+    padding-right: 20px;
 }
 
 /* --- Sections --- */
@@ -146,7 +147,7 @@ h2 {
 h3 {
     font-size: 1.25rem;
     color: #5C3E94; /* Primary color for subheadings */
-    text-align: center;
+    /* text-align: center; */ /* Remove center align for docs */
 }
 
 /* --- Paragraphs --- */
@@ -253,7 +254,7 @@ a:hover {
     font-weight: 600;
 }
 
-/* --- Icon Styles (for comparison table) --- */       
+/* --- Icon Styles (for comparison table) --- */        
 .icon-wrapper {
     /* Esto reemplaza a "flex items-center" de Tailwind */
     display: flex;
@@ -419,7 +420,134 @@ a:hover {
     color: #e6edf3;
 }
 
-/* --- Media Queries --- */
+/* --- Documentation Page --- */
+.docs-layout.container {
+    display: flex;
+    gap: 2rem;  
+    padding-top: 80px;  
+    padding-bottom: 80px;
+}
+
+.docs-sidebar {
+    width: 250px;
+    flex-shrink: 0;
+    position: sticky;
+    /* 80px (navbar) + 20px (gap) = 100px */
+    top: 100px;  
+    /* Adjust height to account for navbar */
+    height: calc(100vh - 120px);  
+    overflow-y: auto; /* For many links */
+}
+
+.docs-content {
+    flex-grow: 1;
+    min-width: 0; /* Prevents flexbox overflow */
+}
+
+.docs-sidebar .sidebar-nav h3 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* A muted text color for the dark bg */
+    color: #999;  
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    /* Override h3 default */
+    text-align: left;  
+}
+
+.docs-sidebar .sidebar-nav h3:first-child {
+    margin-top: 0;
+}
+
+.docs-sidebar .sidebar-nav a {
+    display: block;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    border-radius: 6px;
+    /* Match your nav-links */
+    color: #e6edf3;  
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.docs-sidebar .sidebar-nav a:hover {
+    /* Use your secondary bg color */
+    background-color: #262730;  
+    color: #e6edf3;
+}
+
+.docs-sidebar .sidebar-nav a.active {
+    background-color: #262730;
+    /* Use your primary color */
+    color: #5C3E94;  
+    font-weight: 700;
+}
+
+/* --- Doc Content Overrides --- */
+.docs-content h1,
+.docs-content h2 {
+    /* Override centered headings */
+    text-align: left;  
+    /* Add a nice separator */
+    border-bottom: 1px solid #5C3E94;  
+    padding-bottom: 0.5rem;
+    margin-top: 0;
+}
+
+/* Basic styling for the <ol> */
+.docs-content ol {
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.docs-content ol li {
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Style the <hr> from the HTML */
+.docs-content hr {
+    border: 0;
+    border-top: 1px solid #5C3E94;
+    margin-top: 1rem;  
+    margin-bottom: 1rem;
+}
+
+/* --- Copy button --- */
+.copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.copy-button:hover {
+    opacity: 1;
+}
+.code-block-wrapper {
+    position: relative;
+}
+
+.icon-heart {
+    display: inline-block; /* Para que se comporte como texto */
+    width: 1em;           /* Se ajusta al tamaño de la fuente */
+    height: 1em;          /* Se ajusta al tamaño de la fuente */
+    color: #9621d6;       /* Un color rojo bonito */
+    position: relative;   /* Para ajustar la alineación */
+    top: 0.125em;         /* Lo alinea verticalmente con el texto */
+}
+
+
+/* =========================================================
+=================== MEDIA QUERIES (FIXED) ===============
+=========================================================
+*/
 @media (max-width: 768px) {
     .hamburger {
         display: inline-block; /* Show hamburger on mobile */
@@ -448,7 +576,7 @@ a:hover {
         /* Hide menu off-screen */
         position: fixed;
         top: 0;
-        left: -100%; 
+        left: -100%;  
         width: 60%;
         max-width: 300px;
         height: 100vh;
@@ -488,7 +616,8 @@ a:hover {
     }
 
     .container {
-        padding: 0 15px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
 
     .code-tabs {
@@ -563,5 +692,54 @@ a:hover {
     /* The feature cell doesn't need a label */
     .comparison-cell.feature::before {
         content: none;
+    }
+
+    /* 1. Apila el layout verticalmente */
+    .docs-layout.container {
+        flex-direction: column;
+        padding-top: 80px;
+    }
+
+    /* 2. Convierte el sidebar de escritorio en un bloque normal */
+    .docs-sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+        overflow-y: visible;
+        border-bottom: 1px solid #5C3E94;
+        padding-bottom: 1rem;
+        margin-bottom: 0;
+        background-color: transparent;
+        padding-top: 40px;
+    }
+
+    /* 3. Nos aseguramos de que el botón de hamburguesa viejo no aparezca */
+    .docs-sidebar .hamburger {
+        display: none;
+    }
+
+    /* 4. Estilos para el menú de navegación del sidebar en móvil */
+    .docs-sidebar .sidebar-nav {
+        display: block; 
+        position: static !important; 
+        margin-top: 0; 
+        padding: 0;
+        background-color: transparent; 
+        border: none;
+        border-radius: 0;
+    }
+    .docs-content section,
+    .docs-content h1 {
+        margin-top: 0;
+    }
+    .docs-content hr {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    .docs-content section {
+        margin-top: 0;
+    }
+    .docs-content {
+        padding-top: 1px;
     }
 }

@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arewa AI - Docs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/arewa/icon.png" type="image/png">
+    <link rel="stylesheet" href="assets/libs/atom-one-dark.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <img src="assets/arewa/logo.png" alt="Arewa AI" class="logo">
+            <button class="hamburger" aria-label="Open navigation menu" aria-expanded="false">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+                <ul class="nav-links">
+                    <li><a href="index.html#inicio">Inicio</a></li>   
+                    <li><a href="index.html#servicios">Servicios</a></li>
+                    <li><a href="index.html#beneficios">Beneficios</a></li>
+                    <li><a href="index.html#nosotros">Nosotros</a></li>
+                    <li><a href="index.html#early-access">Solicita acceso</a></li>
+                    <li><a href="dashboard.html">Consola</a></li>
+                    <li><a href="docs.html">Docs</a></li>
+                </ul>
+        </div>
+    </nav>
+    <div class="docs-layout container">
+        <aside class="docs-sidebar"> 
+            <nav class="sidebar-nav">
+                <h3>Empezando</h3>
+                <a href="#quick-start" class="sidebar-link">Guía Rápida</a>
+                
+                <h3 class="mt-4">API</h3>
+                <a href="#chat-completions" class="sidebar-link">Chat Completions</a>
+                <a href="#embeddings" class="sidebar-link">Embeddings</a>
+            </nav>
+        </aside>
+
+        <main class="docs-content">
+            <section id="quick-start">
+                <h1>Guía Rápida</h1>
+                <p>¡Bienvenido a la plataforma de Arewa AI! Accede a los modelos más avanzados en minutos.</p>
+
+                <h3>Antes de comenzar</h3>
+                <p>Prepara todo para hacer tu primera llamada a la API con estos pasos:</p>
+                
+                <ol class="list-decimal list-inside space-y-4">
+                    <li>Crea una cuenta de inferencia en la <a href="dashboard.html" class="text-blue-600 hover:underline font-medium">consola de Arewa AI</a>.</li>
+                    <li>Genera tu clave API (API key) desde el dashboard. Mantenla secreta y segura.</li>
+                    <li>
+                        Instala el paquete oficial de OpenAI para Python. Somos 100% compatibles.
+                        <div class="code-content">
+                            <button class="copy-button">Copy</button>
+                            <pre><code class="language-bash">pip install openai</code></pre>
+                        </div>
+                    </li>
+                    <li>Configura tu API key como una variable de entorno. Es la forma más segura de manejar tu clave.
+                        <div class="code-content">
+                            <button class="copy-button">Copy</button>
+                            <pre><code class="language-bash">export AREWA_API_KEY='tu-api-key-aqui'</code></pre>
+                        </div>
+                    </li>
+                </ol>
+            </section>
+
+            <hr class="my-16">
+
+            <section id="chat-completions">
+                <h2>Chat Completions</h2>
+                <p>
+                    Genera respuestas de texto para IA conversacional. Puedes usar cualquiera de los modelos de código abierto disponibles en nuestra plataforma, como Llama 3, Mistral o Gemma, especificando el parámetro `model`.
+                    Nuestra API es 100% compatible con la 
+                    <a href="https://platform.openai.com/docs/api-reference/completions" class="text-blue-600 hover:underline font-medium">Completions API de OpenAI</a>
+                </p>
+
+                <h3>cURL y Python</h3>
+                <p>
+                    El siguiente ejemplo muestra cómo crear una realizar una inferencia de Chat:
+                </p>
+                <div class="code-examples">
+                    <div class="code-tabs">
+                        <button class="tab-button active" onclick="showCode('curl', this)">cURL</button>
+                        <button class="tab-button" onclick="showCode('python', this)">Python</button>
+                    </div>
+                    <div class="code-content">
+                        <div id="curl-code" class="code-block language-bash active">
+                                <button class="copy-button">Copy</button>
+                                <pre><code class="language-bash">$ curl https://api.arewa.ai/inference/v1/chat/completions \
+  -H "Authorization: Bearer $AREWA_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "Qwen/Qwen3-Next-80B-A3B-Instruct",
+    "messages": [
+        {
+            "role": "user",
+            "content": "What is the secret of life?"
+        }
+    ]
+  }'</code></pre>
+                        </div>
+                        <div id="python-code" class="code-block language-python">
+                                <button class="copy-button">Copy</button>
+                                <pre><code class="language-python">import os
+from openai import OpenAI
+
+client = OpenAI(
+    base_url="https://api.arewa.ai/inference/v1",
+    api_key=os.environ.get("AREWA_API_KEY")
+)
+
+completion = client.chat.completions.create(
+    model="Qwen/Qwen3-Next-80B-A3B-Instruct",
+    messages=[
+        {
+            "role": "user",
+            "content": "What is the secret of life?"
+        }
+    ]
+)
+
+print(completion.choices[0].message.content)</code></pre>
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr class="my-16">
+
+            <section id="embeddings">
+                <h2>Embeddings</h2>
+                <p>
+                    Crea representaciones vectoriales para tus datos de texto. Son útiles para búsqueda semántica, clustering, RAG (Retrieval-Augmented Generation) y más.
+                    Nuestra API de Embeddings es 100% compatible con la 
+                    <a href="https://platform.openai.com/docs/api-reference/completions" class="text-blue-600 hover:underline font-medium">Completions API de OpenAI</a>
+                </p>
+                <h3>cURL y Python</h3>
+                <p>
+                    Usa cualquiera de nuestros modelos de embedding disponibles para generar vectores para tu texto.
+                </p>
+               <div class="code-examples">
+                    <div class="code-tabs">
+                        <button class="tab-button active" onclick="showCode('curl', this)">cURL</button>
+                        <button class="tab-button" onclick="showCode('python', this)">Python</button>
+                    </div>
+                    <div class="code-content">
+                        <div id="curl-code" class="code-block language-bash active">
+                                <button class="copy-button">Copy</button>
+                                <pre><code class="language-bash">$ curl https://api.arewa.ai/inference/v1/embeddings \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer $AREWA_API_KEY" \
+  -d '{
+    "model": "text-embedding-3-small",
+    "input": "What is the secret of life?"
+  }'</code></pre>
+                        </div>
+                        <div id="python-code" class="code-block language-python">
+                                <button class="copy-button">Copy</button>
+                                <pre><code class="language-python">import os
+from openai import OpenAI
+
+# Configura tu AREWA_API_KEY como variable de ambiente
+# os.environ["AREWA_API_KEY"] = ""
+
+client = OpenAI(
+    base_url="https://api.arewa.ai/inference/v1",
+    api_key=os.environ.get("AREWA_API_KEY")
+)
+
+response = client.embeddings.create(
+    # Selecciona cualquier modelo de embeddings de Arewa AI
+    model="text-embedding-3-small", 
+    input="What is the secret of life?"
+)
+
+# La API retornará una lista de flotantes (embedding)
+embedding_vector = response.data[0].embedding
+print(f"Embedding vector (first 5 dimensions): {embedding_vector[:5]}")
+print(f"Total dimensions: {len(embedding_vector)}")
+                                </code></pre>
+                            </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <p>
+                &copy; 2025 Arewa AI. Todos los derechos reservados.
+                <br>
+                Hecho con 
+                <svg class="icon-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.11-4.789 9.22a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.218l-.022.012-.007.003h-.001a.75.75 0 01-.708 0h-.001z" />
+                </svg>
+                en México.
+            </p>
+        </div>
+    </footer>
+
+    <script src="assets/libs/highlight.min.js"></script>
+    <script>
+        // Tab-switching function
+        function showCode(language, buttonElement) {
+            // Find the closest .code-examples container
+            const parent = buttonElement.closest('.code-examples');
+            
+            // Hide all code blocks within this container
+            const codeBlocks = parent.querySelectorAll('.code-block');
+            codeBlocks.forEach(block => block.classList.remove('active'));
+
+            // Remove active class from all tab buttons within this container
+            const tabButtons = parent.querySelectorAll('.tab-button');
+            tabButtons.forEach(button => button.classList.remove('active'));
+
+            // Show selected code block
+            parent.querySelector('#' + language + '-code').classList.add('active');
+
+            // Add active class to clicked button
+            buttonElement.classList.add('active');
+        }
+        
+        // Sidebar Hamburger
+        const sidebarHamburger = document.querySelector('.docs-sidebar .hamburger');
+        const sidebarNav = document.querySelector('.docs-sidebar .sidebar-nav');
+
+        if (sidebarHamburger && sidebarNav) {
+            sidebarHamburger.addEventListener('click', () => {
+                const isExpanded = sidebarHamburger.getAttribute('aria-expanded') === 'true';
+                sidebarHamburger.setAttribute('aria-expanded', !isExpanded);
+                sidebarNav.classList.toggle('active');
+            });
+
+            // Close sidebar menu when a link is clicked
+            const sidebarNavAnchors = sidebarNav.querySelectorAll('a');
+            sidebarNavAnchors.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (sidebarNav.classList.contains('active')) {
+                        sidebarHamburger.setAttribute('aria-expanded', 'false');
+                        sidebarNav.classList.remove('active');
+                    }
+                });
+            });
+        }
+
+        // Copy-to-Clipboard functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // FIX: Wait for the DOM to be ready before highlighting
+            // Also check if hljs was loaded correctly
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            } else {
+                console.error('highlight.min.js failed to load or define hljs.');
+            }
+
+            const copyButtons = document.querySelectorAll('.copy-button');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Find the <pre> tag. It's the next sibling or the child of the next sibling.
+                    let pre = button.nextElementSibling;
+                    if (pre && pre.tagName !== 'PRE') {
+                        pre = pre.querySelector('pre');
+                    }
+                    if (!pre) {
+                         // Fallback for flat structure
+                        pre = button.closest('.code-block-wrapper').querySelector('pre');
+                    }
+                    
+                    const code = pre.querySelector('code');
+                    
+                    if (code) {
+                        const textarea = document.createElement('textarea');
+                        textarea.value = code.innerText;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        try {
+                            document.execCommand('copy');
+                            button.innerText = '¡Copiado!';
+                        } catch (err) {
+                            console.error('Failed to copy text: ', err);
+                            button.innerText = 'Error';
+                        }
+                        document.body.removeChild(textarea);
+                        
+                        setTimeout(() => {
+                            button.innerText = 'Copy';
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
+        <script>
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksAnchors = navLinks.querySelectorAll('a');
+
+        hamburger.addEventListener('click', () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked (for single-page apps)
+        navLinksAnchors.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arewa AI - LLMs como Servicio</title>
+    <title>Arewa AI - La plataforma de IA sobearana</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/arewa/icon.png" type="image/png">
     <link rel="stylesheet" href="assets/libs/atom-one-dark.min.css">
@@ -18,12 +18,13 @@
                 </span>
             </button>
             <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#inicio">Inicio</a></li>   
                 <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#beneficios">Beneficios</a></li>
                 <li><a href="#nosotros">Nosotros</a></li>
                 <li><a href="#early-access">Solicita acceso</a></li>
                 <li><a href="dashboard.html">Consola</a></li>
+                <li><a href="docs.html">Docs</a></li>
             </ul>
         </div>
     </nav>
@@ -40,6 +41,7 @@
                 </div>
                 <div class="code-content">
                     <div id="curl-code" class="code-block language-bash active">
+                        <button class="copy-button">Copy</button>
                         <pre><code class="language-bash">$ curl https://api.arewa.ai/inference/v1/chat/completions \
   -H "Authorization: Bearer $AREWA_API_KEY" \
   -H "Content-Type: application/json" \
@@ -54,6 +56,7 @@
   }'</code></pre>
                     </div>
                     <div id="python-code" class="code-block language-python">
+                        <button class="copy-button">Copy</button>
                         <pre><code class="language-python">import os
 from openai import OpenAI
 
@@ -279,7 +282,11 @@ print(completion.choices[0].message.content)</code></pre>
             <p>
                 &copy; 2025 Arewa AI. Todos los derechos reservados.
                 <br>
-                Hecho con ❤️ en México.
+                Hecho con 
+                <svg class="icon-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.11-4.789 9.22a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.218l-.022.012-.007.003h-.001a.75.75 0 01-.708 0h-.001z" />
+                </svg>
+                en México.
             </p>
         </div>
     </footer>
@@ -305,25 +312,75 @@ print(completion.choices[0].message.content)</code></pre>
         }
     </script>
     <script>
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksAnchors = navLinks.querySelectorAll('a');
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksAnchors = navLinks.querySelectorAll('a');
 
-    hamburger.addEventListener('click', () => {
-        const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
-        hamburger.setAttribute('aria-expanded', !isExpanded);
-        navLinks.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked (for single-page apps)
-    navLinksAnchors.forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                hamburger.setAttribute('aria-expanded', 'false');
-                navLinks.classList.remove('active');
-            }
+        hamburger.addEventListener('click', () => {
+            const isExpanded = hamburger.getAttribute('aria-expanded') === 'true';
+            hamburger.setAttribute('aria-expanded', !isExpanded);
+            navLinks.classList.toggle('active');
         });
-    });
-</script>
+
+        // Close menu when a link is clicked (for single-page apps)
+        navLinksAnchors.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('active')) {
+                    hamburger.setAttribute('aria-expanded', 'false');
+                    navLinks.classList.remove('active');
+                }
+            });
+        });
+    </script>
+    <script>
+        // Copy-to-Clipboard functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // FIX: Wait for the DOM to be ready before highlighting
+            // Also check if hljs was loaded correctly
+            if (typeof hljs !== 'undefined') {
+                hljs.highlightAll();
+            } else {
+                console.error('highlight.min.js failed to load or define hljs.');
+            }
+
+            const copyButtons = document.querySelectorAll('.copy-button');
+            
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Find the <pre> tag. It's the next sibling or the child of the next sibling.
+                    let pre = button.nextElementSibling;
+                    if (pre && pre.tagName !== 'PRE') {
+                        pre = pre.querySelector('pre');
+                    }
+                    if (!pre) {
+                         // Fallback for flat structure
+                        pre = button.closest('.code-block-wrapper').querySelector('pre');
+                    }
+                    
+                    const code = pre.querySelector('code');
+                    
+                    if (code) {
+                        const textarea = document.createElement('textarea');
+                        textarea.value = code.innerText;
+                        document.body.appendChild(textarea);
+                        textarea.select();
+                        try {
+                            document.execCommand('copy');
+                            button.innerText = '¡Copiado!';
+                        } catch (err) {
+                            console.error('Failed to copy text: ', err);
+                            button.innerText = 'Error';
+                        }
+                        document.body.removeChild(textarea);
+                        
+                        setTimeout(() => {
+                            button.innerText = 'Copy';
+                        }, 2000);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>
