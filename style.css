@@ -40,6 +40,7 @@ body {
     height: 40px; /* Adjust height as needed */
     width: auto;
     margin: 0;
+    display: block;
 }
 
 .nav-links {
