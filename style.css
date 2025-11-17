@@ -8,7 +8,7 @@
 
 /* --- Global Styles --- */
 body {
-    background-color: #0e1117;  
+    background-color: #1b1d1f;  
     color: #e6edf3;  
     font-family: 'Source Code Pro', monospace;  
     font-size: 16px;
@@ -21,12 +21,12 @@ body {
 
 /* --- Navigation --- */
 .navbar {
-    /* 1. Usamos RGBA para transparencia */
-    background-color: rgba(38, 39, 48, 0.7); 
+    /* Navbar color */
+    background-color: rgba(27, 29, 31, 0.7);
     
     /* 2. El efecto "vidrio esmerilado" */
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px); 
+    -webkit-backdrop-filter: blur(10px); 
 
     padding: 1rem 0;
     position: fixed;
@@ -34,8 +34,10 @@ body {
     width: 100%;
     z-index: 1000;
 
-    /* 3. Suavizamos el borde */
+    /* 3. Suavizamos el borde 
     border-bottom: 1px solid rgba(119, 10, 173, 0.25);
+    */
+    border-bottom: none;
 
     /* 4. Una transición suave por si cambia en el futuro */
     transition: background-color 0.3s ease, border-color 0.3s ease;
@@ -85,10 +87,10 @@ body {
 }
 
 .nav-links a:hover {
-    color: #e6edf3; /* Mantenemos el texto claro */
+    color: #ffffff; /* Mantenemos el texto claro */
     
     /* 3. Añadimos un fondo muy sutil al pasar el ratón */
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(119, 10, 173, 0.3);
 }
 
 .nav-links .nav-cta {
@@ -145,9 +147,10 @@ body {
 
 /* --- Sections --- */
 .hero {
-    padding: 70px 0 60px;
+    padding: 100px 0 60px;
     text-align: center;
-    background: linear-gradient(135deg, #0e1117 0%, #262730 100%);
+    /* background: linear-gradient(135deg, #0e1117 0%, #262730 100%); */
+    background-color: #1b1d1f
 }
 
 .section {
@@ -614,7 +617,7 @@ a:hover {
         height: 100vh;
 
         /* 1. Usamos RGBA (transparencia del 98%) */
-        background-color: rgba(38, 39, 48, 0.98); 
+        background-color: rgba(27, 29, 31, 0.98); 
         
         /* 2. El efecto "vidrio esmerilado" */
         backdrop-filter: blur(20px);
