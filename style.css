@@ -3,14 +3,17 @@
     Dark theme with purple/blue titles and white text
 */
 
+/* --- Añadir al inicio de style.css --- */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+
 /* --- Global Styles --- */
 body {
     background-color: #0e1117;  
     color: #e6edf3;  
-    font-family: 'Source Code Pro', 'Courier New', monospace;  
+    font-family: 'Source Code Pro', monospace;  
     font-size: 16px;
     line-height: 1.6;
-    margin: 0; /* <-- KEEP this one */
+    margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -18,13 +21,24 @@ body {
 
 /* --- Navigation --- */
 .navbar {
-    background-color: #262730; /* Secondary background for sidebars */
+    /* 1. Usamos RGBA para transparencia */
+    background-color: rgba(38, 39, 48, 0.7); 
+    
+    /* 2. El efecto "vidrio esmerilado" */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
     padding: 1rem 0;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
-    border-bottom: 1px solid #770aadff; /* muy parecido al de logo 450693*/
+
+    /* 3. Suavizamos el borde */
+    border-bottom: 1px solid rgba(119, 10, 173, 0.25);
+
+    /* 4. Una transición suave por si cambia en el futuro */
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .navbar .container {
@@ -50,18 +64,35 @@ body {
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .nav-links a {
     color: #e6edf3;
     text-decoration: none;
-    font-weight: 500;
-    transition: color 0.3s ease;
+    font-family: 'Google Sans Code', monospace;  
+    font-weight: 700;
+    
+    /* 1. Añadimos padding para crear una "cápsula" */
+    padding: 0.5rem 1rem;
+    border-radius: 8px; /* Esquinas redondeadas sutiles */
+
+    /* 2. Transición a "all" para incluir el fondo */
+    transition: all 0.3s ease;
+
+    /* Tamaño de Fuente */
+    font-size: 15px;
 }
 
 .nav-links a:hover {
-    color: #770aadff; /* Primary color on hover */
+    color: #e6edf3; /* Mantenemos el texto claro */
+    
+    /* 3. Añadimos un fondo muy sutil al pasar el ratón */
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links .nav-cta {
+    padding: 0;
 }
 
 /* --- Hamburger Menu --- */
@@ -578,10 +609,21 @@ a:hover {
         position: fixed;
         top: 0;
         left: -100%;  
-        width: 60%;
+        width: 50%;
         max-width: 300px;
         height: 100vh;
-        background-color: #262730;
+
+        /* 1. Usamos RGBA (transparencia del 98%) */
+        background-color: rgba(38, 39, 48, 0.98); 
+        
+        /* 2. El efecto "vidrio esmerilado" */
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        
+        /* 3. Un borde en el lateral (en lugar de abajo) */
+        border-right: 1px solid rgba(119, 10, 173, 0.25);
+        /* --- Fin de la solución --- */
+
         flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
