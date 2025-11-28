@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arewa AI - Conectando...</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="assets/arewa/icon.png" type="image/png">
+    <style>
+        /* Reusing your Error Page Layout */
+        .placeholder-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            padding: 20px;
+        }
+        .placeholder-container .logo {
+            height: 60px;
+            margin-bottom: 2rem;
+        }
+        
+        /* New Spinner matching your Brand Color (#5C3E94) */
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(92, 62, 148, 0.2); /* Brand color faded */
+            border-top: 4px solid #5C3E94; /* Brand color solid */
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1.5rem;
+        }
+
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+
+        .status-text {
+            color: #5C3E94;
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .sub-text {
+            color: #666; /* Or whatever your secondary text color is in style.css */
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container placeholder-container">
+        <img src="assets/arewa/logo.png" alt="Arewa AI" class="logo">
+        
+        <div class="spinner"></div>
+        
+        <div class="status-text">Conectando...</div>
+        <p class="sub-text">Verificando disponibilidad del dashboard</p>
+    </div>
+
+    <script>
+        const DASHBOARD_URL = "https://dashboard.arewa.ai";
+        const ERROR_PAGE = "dashboard_error.html";
+
+        async function initConnection() {
+            try {
+                const controller = new AbortController();
+                // 2.5 second timeout
+                const timeoutId = setTimeout(() => controller.abort(), 2500); 
+
+                // Attempt to reach the dashboard
+                await fetch(DASHBOARD_URL, { 
+                    mode: 'no-cors', 
+                    signal: controller.signal 
+                });
+
+                clearTimeout(timeoutId);
+                
+                // If successful (or opaque response), go to Dashboard
+                window.location.replace(DASHBOARD_URL);
+
+            } catch (error) {
+                // If network fails or times out, go to your custom error page
+                console.error("Connection failed, redirecting to error page.");
+                window.location.replace(ERROR_PAGE);
+            }
+        }
+
+        // Run immediately when page loads
+        window.addEventListener('DOMContentLoaded', initConnection);
+    </script>
+</body>
+</html>
